@@ -22,8 +22,8 @@ Estamos disponíveis para tirar dúvidas, tanto sobre o escopo quanto a tecnolog
 
 ## Checklist
 - [X] Login
-- [ ] Gráfico
-- [ ] Ativos atualizam periodicamente
+- [X] Gráfico
+- [X] Ativos atualizam periodicamente
 - [ ] Cotações periodicas dos ativos (visualização em D/M/A)
 - [ ] Consulta de preços
 - [ ] E-mail ao usuário sugerindo compra/venda
