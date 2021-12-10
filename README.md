@@ -21,7 +21,7 @@ Features extras são bem vindas, boas práticas e patterns também 😉
 Estamos disponíveis para tirar dúvidas, tanto sobre o escopo quanto a tecnologia.
 
 ## Checklist
-- [ ] Login
+- [X] Login
 - [ ] Gráfico
 - [ ] Ativos atualizam periodicamente
 - [ ] Cotações periodicas dos ativos (visualização em D/M/A)
