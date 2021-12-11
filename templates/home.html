@@ -15,17 +15,36 @@
     <body>
     <h2>Verifique os gráficos de ativos!</h2>
     <br>
-
-    <label for="ticker-input">Enter Symbol:</label>
-    <input type="text" id="ticker-input">
-    <input type="button" value="submit" id="submit-btn">
-    <br>
+    
+    <div class='col-sm-12 col-lg-12 col-md-12'>
+    
+        <form class="form-inline">
+          <label class="sr-only" for="ticker-input">Sigla</label>
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Sigla</div>
+            </div>
+            <input type="text" class="form-control" id="ticker-input" placeholder="AAPL">
+          </div>
+  
+  
+  
+          <label class="sr-only" for="period">Username</label>
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Período (dias)</div>
+            </div>
+            <input type="number" class="form-control" id="period" placeholder="7">
+          </div>
+  
+          <input type="button"  class="btn btn-primary mb-2" value="Pesquisar" id="submit-btn">
+        </form>
+    </div>
 
     <div id="graph-area" style="height:80%; width:80%;">
     <canvas id="myChart"></canvas>
     </div>
-    <br>
-
+    
     <script>
 
         $(document).ready(function(){
@@ -39,7 +58,7 @@
                 success: function (res, status) {
                     // AAPL's stock price and SMA data is now in the "res" object
                     var tickerDisplay = res['prices']['Meta Data']['2. Symbol'];
-                    var graphTitle = tickerDisplay + ' (data for the trailing 500 trading days)'
+                    var graphTitle = tickerDisplay + ' (dados dos últimos 500 dias)'
 
                     var priceSeries = res['prices']['Time Series (Daily)'];
                     var daily_adjusted_close = [];
@@ -74,6 +93,8 @@
                     //instruct Chart.js to plot the graph, with "dates" as the x-axis labels and "daily_adjusted_close" and "sma_data" as the y-axis values
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var myChart = new Chart(ctx, {
+                    animationEnabled: true,
+	                zoomEnabled: true,
                     type: 'line',
                         data: {
                             labels: dates.slice(-500),
@@ -129,6 +150,7 @@
             // when the user specifies a new ticker, we call the Django backend (the 'get_stock_data' function) to get the stock data and refresh the graph. 
             // obtain the ticker string from the input textbox
             var tickerText = $('#ticker-input').val();
+            var period = $('#period').val();
             $.ajax({
                 type: "POST",
                 url: "/get_stock_data/",
@@ -138,7 +160,7 @@
                 success: function (res, status) {
                     // stock price and SMA data for the user-specified ticker is now in the "res" object
                     var tickerDisplay = res['prices']['Meta Data']['2. Symbol'];
-                    var graphTitle = tickerDisplay + ' (data for the trailing 500 trading days)'
+                    var graphTitle = tickerDisplay + ' (dados dos últimos '+ period + ' dias)';
 
                     var priceSeries = res['prices']['Time Series (Daily)'];
                     var daily_adjusted_close = [];
@@ -165,10 +187,11 @@
                     sma_data_parse();
 
 
-                    // only keep the latest 500 data points (i.e., data for the latest 500 trading days) for the three lists below
-                    daily_adjusted_close.reverse().slice(500);
-                    sma_data.reverse().slice(500);
-                    dates.reverse().slice(500);
+                    // only keep the latest x data points (i.e., data for the latest x trading days) for the three lists below
+
+                    daily_adjusted_close.reverse().slice(period);
+                    sma_data.reverse().slice(period);
+                    dates.reverse().slice(period);
 
                     //instruct Chart.js to plot the graph, with "dates" as the x-axis labels and "daily_adjusted_close" and "sma_data" as the y-axis values
                     $('#myChart').remove(); // this is my <canvas> element
@@ -176,12 +199,13 @@
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var myChart = new Chart(ctx, {
                     type: 'line',
+                    zoomEnabled: true,
                         data: {
-                            labels: dates.slice(-500),
+                            labels: dates.slice(-period),
                             datasets: [
                                 {
                                     label: 'Daily Adjusted Close',
-                                    data: daily_adjusted_close.slice(-500),
+                                    data: daily_adjusted_close.slice(-period),
                                     backgroundColor: [
                                         'green',
                                     ],
@@ -192,7 +216,7 @@
                                 },
                                 {
                                     label: 'Simple Moving Average (SMA)',
-                                    data: sma_data.slice(-500),
+                                    data: sma_data.slice(-period),
                                     backgroundColor: [
                                         'blue',
                                     ],
