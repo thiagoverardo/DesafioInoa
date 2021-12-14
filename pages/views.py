@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import FormView, TemplateView
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import StockData
 from django.contrib import messages
+from .forms import ContactForm
+from django.urls import reverse_lazy
 
 import requests
 import json
@@ -56,3 +58,16 @@ def get_stock_data(request):
 
     #return the data back to the frontend AJAX call 
     return HttpResponse(json.dumps(output_dictionary), content_type='application/json')
+
+class ContactView(FormView):
+    template_name = 'pages/contact.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('pages:success')
+
+    def form_valid(self, form):
+        # Calls the custom send method
+        form.send()
+        return super().form_valid(form)
+
+class ContactSuccessView(TemplateView):
+    template_name = 'pages/success.html'

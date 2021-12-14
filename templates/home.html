@@ -47,48 +47,19 @@
 
     <br>
 
-    <h2>Notificação por e-mail:</h2>
-    <br>
-
-    <div class='col-sm-12 col-lg-12 col-md-12'>
+    {% if user.is_authenticated %}
     
-        <form class="form-inline">
-          <label class="sr-only" for="ticker-input">Sigla</label>
-          <div class="input-group mb-2 mr-sm-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Sigla</div>
-            </div>
-            <input type="text" class="form-control" id="ticker-input" placeholder="AAPL">
-          </div>
-          <form class="form-inline">
-            <label class="sr-only" for="ticker-input">Sigla</label>
 
-            <div class="a mb-2 mr-sm-2">
-                <select class="form-control form-control">
-                    <option value="subir">Passar de</option>
-                    <option value="cair">Cair de</option>
-                </select>
-            </div>
-  
-  
-          <label class="sr-only" for="period">Username</label>
-          <div class="input-group mb-2 mr-sm-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Valor (dol)</div>
-            </div>
-            <input type="number" class="form-control" id="period" placeholder="340,5">
-          </div>
-  
-          <input type="button"  class="btn btn-primary mb-2" value="Notificar-me" id="submit-btn">
-        </form>
-    </div>
+    {% else %}
+    <h4>(Para receber notificações por e-mail, realize o login)</h4>
+    <br>
+    {% endif %}
 
     <div id="graph-area" style="height:80%; width:80%;">
     <canvas id="myChart"></canvas>
     </div>
     
     <script>
-
         $(document).ready(function(){
             // Right after the page is loaded, we get the stock data (default to AAPL) from the Django backend (the 'get_stock_data' function) for plotting
             $.ajax({
