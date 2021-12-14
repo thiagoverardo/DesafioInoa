@@ -29,9 +29,20 @@
         </nav>
     </header>
 
+    <div id = "content">
+        {% include "account/messages.html" %}
+    </div>
+
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
 </body>
+<script>
+    setTimeout(function(){
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 3000)
+  </script> 
 </html>

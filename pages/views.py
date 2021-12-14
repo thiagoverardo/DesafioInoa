@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import StockData
+from django.contrib import messages
 
 import requests
 import json
@@ -16,6 +17,8 @@ DATABASE_ACCESS = True
 
 class HomePageView(TemplateView):
     template_name = "home.html"
+
+
 
 @csrf_exempt
 def get_stock_data(request):
@@ -45,6 +48,11 @@ def get_stock_data(request):
     #save the dictionary to database
     temp = StockData(symbol=ticker, data=json.dumps(output_dictionary))
     temp.save()
+
+    if(output_dictionary['prices']):
+        messages.error(request, 'Não existem ativos com essa sigla')
+
+    
 
     #return the data back to the frontend AJAX call 
     return HttpResponse(json.dumps(output_dictionary), content_type='application/json')
