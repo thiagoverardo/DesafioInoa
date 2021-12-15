@@ -48,5 +48,13 @@ E agora, basta entrar em seu servidor local (provavlemente o **http://127.0.0.1:
 
 Para facilitar, mostrarei um *overview* da entrega.
 
-Páginas e funcionalidades:
+### Páginas e funcionalidades:
 
+Primeiramente, temos a *home* do site, ela é o elemento principal, dado que tem o gráfico e as funcionalidades desejadas.
+
+<div align="center">
+  <img src="imagens/home.png" width= "300"><br>
+</div>
+<p  align="center">
+  <c style="font-size:11px">Imagens 1, 2 e 3: Tutorial de como exportar uma conversa do WhatsApp</c>
+</p>
