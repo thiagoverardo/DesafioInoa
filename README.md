@@ -104,3 +104,19 @@ Por fim, se o usuário preencher o formulário, um e-mail chegará em sua caixa 
 <p  align="center">
   <c style="font-size:11px">Imagem 7: Exemplo de e-mail</c>
 </p>
+
+## Observações finais
+
+O projeto foi bem divertido de fazer, poucas vezes precisei quebrar a cabeça para resolver algum problema. O tempo foi um inimigo, dado que trabalhei no projeto muito menos do que imaginei.
+
+Tudo que foi pedido eu consegui realizar, menos a parte de notificação periódica do e-mail. Consegui criar a função que checa o preço da ação de 12 em 12 horas, mas não integrei com o disparo de e-mails.
+
+O formulário apenas envia o e-mail na hora que é solicitado, não computa nada.
+
+Uma observação importante foi que eu utilizei um arquivo ```.env``` para não disponibilizar as informações desse email "ativosinoa@gmail.com" que criei para esse projeto.
+
+Outra observação é que, caso estejam faltando algumas dependências, o arquivo [pip](pip.txt) está disponível no repositório.
+
+Por fim, não subi a aplicação em nenhum servidor (como um da AWS) pois não foi expecificado no e-mail.
+
+No mais é isso, espero que goste do resultado.
