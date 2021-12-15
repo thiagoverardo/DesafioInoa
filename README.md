@@ -26,4 +26,27 @@ Estamos disponíveis para tirar dúvidas, tanto sobre o escopo quanto a tecnolog
 - [X] Ativos atualizam periodicamente
 - [X] Cotações periodicas dos ativos (visualização em D/M/A)
 - [X] Consulta de preços
-- [ ] E-mail ao usuário sugerindo compra/venda
+- [X] E-mail ao usuário sugerindo compra/venda
+
+## Instruções
+
+Para rodar o programa, basta rodar o ambiente virtual que foi criado:
+
+```
+venv\Scripts\activate.bat
+```
+
+Em seguida realizar o comando para iniciar o servidor do Django:
+
+```
+py manage.py runserver
+```
+
+E agora, basta entrar em seu servidor local (provavlemente o **http://127.0.0.1:8000/**)
+
+## Features
+
+Para facilitar, mostrarei um *overview* da entrega.
+
+Páginas e funcionalidades:
+
