@@ -53,8 +53,8 @@ Para facilitar, mostrarei um *overview* da entrega.
 Primeiramente, temos a *home* do site, ela é o elemento principal, dado que tem o gráfico e as funcionalidades desejadas.
 
 <div align="center">
-  <img src="imagens/home.png" width= "300"><br>
+  <img src="imagens/home.png" width= "600"><br>
 </div>
 <p  align="center">
-  <c style="font-size:11px">Imagens 1, 2 e 3: Tutorial de como exportar uma conversa do WhatsApp</c>
+  <c style="font-size:11px">Imagem 1: Home</c>
 </p>
