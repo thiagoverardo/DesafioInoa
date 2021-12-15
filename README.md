@@ -20,6 +20,13 @@ Features extras são bem vindas, boas práticas e patterns também 😉
 
 Estamos disponíveis para tirar dúvidas, tanto sobre o escopo quanto a tecnologia.
 
+## Sumário
+
+- [Checklist](#checklist)
+- [Instruções](#instruções)
+- [Features](#features)
+- [Observações Finais](#observações-finais)
+
 ## Checklist
 - [X] Login
 - [X] Gráfico
