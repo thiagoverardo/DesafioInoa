@@ -58,3 +58,49 @@ Primeiramente, temos a *home* do site, ela é o elemento principal, dado que tem
 <p  align="center">
   <c style="font-size:11px">Imagem 1: Home</c>
 </p>
+
+Em seguida, as funcionalidades de *login* e cadastro para o usuário conseguir receber notificações por e-mail;
+
+<div align="center">
+  <img src="imagens/entrar.png" width= "600"><br>
+  <img src="imagens/cadastro.png" width= "600"><br>
+</div>
+<p  align="center">
+  <c style="font-size:11px">Imagens 2 e 3: login e cadastro</c>
+</p>
+
+Ao realizar o cadastro, o usuário pode pedir por gráficos diferentes e em períodos desejados.
+
+<div align="center">
+  <img src="imagens/filtro.png" width= "600"><br>
+</div>
+<p  align="center">
+  <c style="font-size:11px">Imagem 4: home com o login efetuado e filtrando o gráfico de ativos</c>
+</p>
+
+Caso o usuário digite algo errado ou não exista o que ele deseja pesquisar, uma mensagem de erro irá aparecer.
+
+<div align="center">
+  <img src="imagens/erro.png" width= "600"><br>
+</div>
+<p  align="center">
+  <c style="font-size:11px">Imagem 5: Erro</c>
+</p>
+
+Ao analisar os gráficos desejados, o usuário pode ser encaminhado para a pagina de notificação por e-mail.
+
+<div align="center">
+  <img src="imagens/email.png" width= "600"><br>
+</div>
+<p  align="center">
+  <c style="font-size:11px">Imagem 6: home com o login efetuado e filtrando o gráfico de ativos</c>
+</p>
+
+Por fim, se o usuário preencher o formulário, um e-mail chegará em sua caixa de entrada assim que as condições forem cumpridas;
+
+<div align="center">
+  <img src="imagens/emailRecebido.png" width= "600"><br>
+</div>
+<p  align="center">
+  <c style="font-size:11px">Imagem 7: Exemplo de e-mail</c>
+</p>
