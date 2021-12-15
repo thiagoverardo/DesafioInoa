@@ -9,6 +9,7 @@
         <!--<link rel="stylesheet" href="style.css">-->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <title>Stock Visualizer</title>
     </head>
 
@@ -46,10 +47,8 @@
     </div>
 
     <br>
-
     {% if user.is_authenticated %}
-    
-
+    <a class="nav-link" href="{% url 'pages:contact' %}"><button  class="btn btn-primary mb-2" id="submit-btn">Notificar-me por e-mail</button></a>
     {% else %}
     <h4>(Para receber notificações por e-mail, realize o login)</h4>
     <br>
@@ -58,7 +57,35 @@
     <div id="graph-area" style="height:80%; width:80%;">
     <canvas id="myChart"></canvas>
     </div>
+
+    <!-- Abaixo pode-se encontrar o script que sugeria ao usuário os ativos presentes na base de dados da API.
+    Como essa funcionalidade gastava muitos usos da API, resolvi retirar. -->
+
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
     
+    <!-- <script>
+        $('#ticker-input').keyup(function () {
+            if($('#ticker-input').val() != ""){
+                var tickerText = $('#ticker-input').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/get_stock_options/",
+                    data: {
+                        'ticker': tickerText,
+                    },
+                    success: function (res, status) {  
+                        console.log(res)                  
+                        $("#ticker-input").autocomplete({
+                            source: res,
+                            minLength: 1
+                        });
+                    }
+                });
+            }
+        });
+    </script> -->
+
     <script>
         $(document).ready(function(){
             // Right after the page is loaded, we get the stock data (default to AAPL) from the Django backend (the 'get_stock_data' function) for plotting
@@ -112,7 +139,7 @@
                             labels: dates.slice(-365),
                             datasets: [
                                 {
-                                    label: 'Daily Adjusted Close',
+                                    label: 'Fechamento Diário Ajustado (DAC)',
                                     data: daily_adjusted_close.slice(-365),
                                     backgroundColor: [
                                         'green',
@@ -123,7 +150,7 @@
                                     borderWidth: 1
                                 },
                                 {
-                                    label: 'Simple Moving Average (SMA)',
+                                    label: 'Média Móvel Simples (SMA)',
                                     data: sma_data.slice(-365),
                                     backgroundColor: [
                                         'blue',
@@ -224,7 +251,7 @@
                             labels: dates.slice(-period),
                             datasets: [
                                 {
-                                    label: 'Daily Adjusted Close',
+                                    label: 'Fechamento Diário Ajustado (DAC)',
                                     data: daily_adjusted_close.slice(-period),
                                     backgroundColor: [
                                         'green',
@@ -235,7 +262,7 @@
                                     borderWidth: 1
                                 },
                                 {
-                                    label: 'Simple Moving Average (SMA)',
+                                    label: 'Média Móvel Simples (SMA)',
                                     data: sma_data.slice(-period),
                                     backgroundColor: [
                                         'blue',

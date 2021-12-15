@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import FormView, TemplateView
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import StockData
 from django.contrib import messages
@@ -19,8 +19,6 @@ DATABASE_ACCESS = True
 
 class HomePageView(TemplateView):
     template_name = "home.html"
-
-
 
 @csrf_exempt
 def get_stock_data(request):
@@ -58,6 +56,17 @@ def get_stock_data(request):
 
     #return the data back to the frontend AJAX call 
     return HttpResponse(json.dumps(output_dictionary), content_type='application/json')
+
+@csrf_exempt
+def get_stock_options(request):
+    ticker = request.POST.get('ticker', 'null')
+    ticker = ticker.upper()
+    candidates = requests.get(f'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={ticker}&apikey={APIKEY}').json()
+    cand_list = []
+    if 'Note' not in candidates:
+        for i in candidates['bestMatches']:
+            cand_list.append(i['1. symbol'])
+    return JsonResponse(candidates, safe=False)
 
 class ContactView(FormView):
     template_name = 'pages/contact.html'

@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path("", include("pages.urls", namespace="pages")),
     path('get_stock_data/', pages.views.get_stock_data),
+    path('get_stock_options/', pages.views.get_stock_options),
 ]
