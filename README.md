@@ -120,6 +120,8 @@ Tudo que foi pedido eu consegui realizar, menos a parte de notificação periód
 
 O formulário apenas envia o e-mail na hora que é solicitado, não computa nada.
 
+Algumas funcionalidades como a sugestão de ativos presentes na API foram retirados do projeto por conta de muito uso da API, a *AlphaVantage* limita seu uso em 5 por minuto. 
+
 Uma observação importante foi que eu utilizei um arquivo ```.env``` para não disponibilizar as informações desse email "ativosinoa@gmail.com" que criei para esse projeto.
 
 Outra observação é que, caso estejam faltando algumas dependências, o arquivo [pip](pip.txt) está disponível no repositório.
